@@ -17,14 +17,14 @@ export default function Home() {
       <div className="relative" style={{ zIndex: 1 }}>
         <Nav />
         <main>
-          <Hero />
-          <Services />
-          <SolarSystem />
-          <Projects />
-          <Founders />
+          <section id="inicio"><Hero /></section>
+          <section id="servicios"><Services /></section>
+          <section id="stack"><SolarSystem /></section>
+          <section id="proyectos"><Projects /></section>
+          <section id="founders"><Founders /></section>
           <Social />
+          <section id="contacto"><CTA /></section>
           <FAQ />
-          <CTA />
         </main>
         <Footer />
       </div>

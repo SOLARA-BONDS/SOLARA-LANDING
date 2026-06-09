@@ -1,13 +1,27 @@
 'use client';
-import { motion, useReducedMotion } from 'motion/react';
-import { List, X } from '@phosphor-icons/react';
-import { useState } from 'react';
-import { SolaraLogoMark } from './SolaraLogo';
 
-const links = [
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Founders', href: '#founders' },
-  { label: 'Contacto', href: '#contacto' },
+import { useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
+import {
+  House,
+  Wrench,
+  Planet,
+  FolderOpen,
+  Users,
+  Envelope,
+  List,
+  X,
+} from '@phosphor-icons/react';
+import { SolaraLogoMark } from './SolaraLogo';
+import { TubelightNavBar } from './ui/tubelight-navbar';
+
+const navItems = [
+  { name: 'Inicio',    url: '#inicio',    icon: House },
+  { name: 'Servicios', url: '#servicios', icon: Wrench },
+  { name: 'Stack',     url: '#stack',     icon: Planet },
+  { name: 'Proyectos', url: '#proyectos', icon: FolderOpen },
+  { name: 'Founders',  url: '#founders',  icon: Users },
+  { name: 'Contacto',  url: '#contacto',  icon: Envelope },
 ];
 
 export function Nav() {
@@ -15,66 +29,67 @@ export function Nav() {
   const reduce = useReducedMotion();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+    <>
+      {/* Logo — fixed top-left */}
+      <div
+        className="fixed top-0 left-0 z-[60] flex items-center"
+        style={{ padding: '0 1.5rem', height: '4rem' }}
+      >
+        <a href="#" className="flex items-center gap-3">
           <SolaraLogoMark size={34} />
-          <span className="font-bold text-lg tracking-tight" style={{ color: '#F2F3AE' }}>
+          <span
+            className="font-bold text-lg tracking-tight hidden sm:inline"
+            style={{ color: '#F2F3AE' }}
+          >
             Solara
           </span>
         </a>
-
-        <nav className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm transition-colors duration-200"
-              style={{ color: '#8a8db0' }}
-              onMouseEnter={e => ((e.target as HTMLElement).style.color = '#F2F3AE')}
-              onMouseLeave={e => ((e.target as HTMLElement).style.color = '#8a8db0')}
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex">
-          <a
-            href="#contacto"
-            className="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 active:scale-[0.97]"
-            style={{ background: 'linear-gradient(135deg, #FC9E4F 0%, #FF521B 100%)', color: '#020122' }}
-          >
-            Empezar proyecto
-          </a>
-        </div>
-
-        <button
-          className="md:hidden p-1 transition-colors"
-          style={{ color: '#8a8db0' }}
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          {open ? <X size={22} /> : <List size={22} />}
-        </button>
       </div>
 
+      {/* CTA — fixed top-right, desktop only */}
+      <div
+        className="fixed top-0 right-0 z-[60] hidden md:flex items-center"
+        style={{ padding: '0 1.5rem', height: '4rem' }}
+      >
+        <a
+          href="#contacto"
+          className="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 active:scale-[0.97]"
+          style={{
+            background: 'linear-gradient(135deg, #FC9E4F 0%, #FF521B 100%)',
+            color: '#020122',
+          }}
+        >
+          Empezar proyecto
+        </a>
+      </div>
+
+      {/* Mobile menu toggle */}
+      <button
+        className="fixed top-0 right-0 z-[60] flex md:hidden items-center justify-center"
+        style={{ width: '4rem', height: '4rem', color: '#8a8db0' }}
+        onClick={() => setOpen(!open)}
+        aria-label="Menu"
+      >
+        {open ? <X size={22} /> : <List size={22} />}
+      </button>
+
+      {/* Mobile drawer */}
       {open && (
         <motion.div
           initial={reduce ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden border-b px-6 py-6 flex flex-col gap-5"
+          className="fixed top-16 left-0 right-0 z-50 md:hidden border-b px-6 py-6 flex flex-col gap-5"
           style={{ backgroundColor: '#08072a', borderColor: '#1c1a45' }}
         >
-          {links.map((l) => (
+          {navItems.map((item) => (
             <a
-              key={l.href}
-              href={l.href}
+              key={item.url}
+              href={item.url}
               onClick={() => setOpen(false)}
               className="font-medium"
               style={{ color: '#F2F3AE' }}
             >
-              {l.label}
+              {item.name}
             </a>
           ))}
           <a
@@ -88,10 +103,10 @@ export function Nav() {
         </motion.div>
       )}
 
-      <div
-        className="absolute inset-0 -z-10 backdrop-blur-md border-b"
-        style={{ backgroundColor: 'rgba(2,1,34,0.85)', borderColor: 'rgba(28,26,69,0.6)' }}
-      />
-    </header>
+      {/* Tubelight floating pill — desktop only */}
+      <div className="hidden md:block">
+        <TubelightNavBar items={navItems} />
+      </div>
+    </>
   );
 }
