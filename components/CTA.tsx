@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, EnvelopeSimple } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { Sun } from './Sun';
+import { BackgroundPaths } from './ui/background-paths';
 
 const C = {
   bg: '#020122',
@@ -19,6 +20,7 @@ export function CTA() {
 
   return (
     <section id="contacto" className="py-28 px-6 relative overflow-hidden">
+      <BackgroundPaths />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #1c1a45, transparent)' }} />
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 50% 55% at 50% 110%, rgba(255,82,27,0.07) 0%, transparent 70%)' }} />

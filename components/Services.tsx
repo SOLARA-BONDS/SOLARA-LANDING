@@ -10,6 +10,7 @@ import {
   CurrencyEth,
 } from '@phosphor-icons/react';
 import type { Icon } from '@phosphor-icons/react';
+import { BackgroundPaths } from './ui/background-paths';
 
 const C = {
   bg: '#020122',
@@ -89,7 +90,8 @@ export function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="servicios" className="py-28 px-6" style={{ background: 'transparent' }}>
+    <section id="servicios" className="py-28 px-6 relative overflow-hidden" style={{ background: 'transparent' }}>
+      <BackgroundPaths />
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 20 }}
