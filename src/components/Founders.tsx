@@ -39,8 +39,7 @@ export default function Founders() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2
-              className="font-bold tracking-tight leading-tight mb-6"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', color: '#F2F3AE' }}
+              style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3.25rem)', letterSpacing: '-0.03em', lineHeight: 1.05, color: '#F2F3AE', marginBottom: '1.5rem' }}
             >
               Un equipo pequeno.<br />
               <span

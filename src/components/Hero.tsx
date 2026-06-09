@@ -29,8 +29,14 @@ export default function Hero() {
           initial={reduce ? false : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-bold leading-[1.05] tracking-tight"
-          style={{ fontSize: 'clamp(3rem, 8vw, 6.5rem)', color: '#F2F3AE' }}
+          style={{
+            fontFamily: "'Outfit', sans-serif",
+            fontWeight: 800,
+            fontSize: 'clamp(3.2rem, 8.5vw, 7rem)',
+            lineHeight: 1,
+            letterSpacing: '-0.03em',
+            color: '#F2F3AE',
+          }}
         >
           Construimos{' '}
           <span

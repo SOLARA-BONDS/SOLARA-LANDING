@@ -77,8 +77,7 @@ export default function Services() {
           className="mb-16"
         >
           <h2
-            className="font-bold tracking-tight leading-tight mb-4"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#F2F3AE' }}
+            style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.03em', lineHeight: 1.05, color: '#F2F3AE', marginBottom: '1rem' }}
           >
             Lo que construimos
           </h2>
