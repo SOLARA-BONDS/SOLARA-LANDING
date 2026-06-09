@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import Logo from './Logo';
 
 const links = [
   { label: 'Servicios', href: '#servicios' },
@@ -30,12 +31,7 @@ export default function Nav() {
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold font-mono"
-            style={{ background: 'linear-gradient(135deg, #FC9E4F, #FF521B)', color: '#020122' }}
-          >
-            S
-          </span>
+          <Logo size={34} />
           <span className="font-semibold text-[15px] tracking-wide" style={{ color: '#F2F3AE' }}>
             Solara
           </span>
