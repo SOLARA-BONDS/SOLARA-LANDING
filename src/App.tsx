@@ -1,5 +1,6 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
+import ParticlesSection from './components/ParticlesSection';
 import Services from './components/Services';
 import Founders from './components/Founders';
 import Contact from './components/Contact';
@@ -10,6 +11,7 @@ export default function App() {
     <div style={{ background: '#020122', minHeight: '100dvh' }}>
       <Nav />
       <Hero />
+      <ParticlesSection />
       <Services />
       <Founders />
       <Contact />
